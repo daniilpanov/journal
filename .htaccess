@@ -1,0 +1,15 @@
+AddDefaultCharset UTF-8
+
+#Если страница не существует
+ErrorDocument 404 http://localhost/journal/404.php
+
+#Отключаем magic_quotes_gpc
+php_flag magic_quotes_gpc Off
+php_flag magic_quotes_runtime Off
+php_value register_globals Off
+
+#Отключаем сообщения типа warning и notice
+php_value error_reporting 1
+
+#Включаем поддержку коротких тегов
+php_flag short_open_tag on
