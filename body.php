@@ -3,23 +3,22 @@
     <!--Здесь должны быть эмблема и поиск на сайте-->
 </header>
 <?php
+require_once "views/VMenu.php";
+
 /**
  * @todo МАРШРУТИЗАТОР
  * проверка $_GET с помощью switch
  */
-if(!isset($_GET))
+if ($_GET)
 {
-    require_once "views/home.php";
-}
-elseif (isset($_GET))
-{
-    // проверка $_GET с помощью switch
-    // должен быть запрос к базе данных(используя паттерн MVC)
-    // для проверки пароля(учителя или ученика)
-
-    /**
-     * @todo ПРОЧЕЕ
-     * например, ученик выбрал дату и т.д.
-    */
+    if (isset($_GET['page']))
+    {
+        switch ($_GET['page'])
+        {
+            case 'journal_list':
+                require_once "views/VJournalList.php";
+                break;
+        }
+    }
 }
 ?>
