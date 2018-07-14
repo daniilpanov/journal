@@ -15,4 +15,11 @@ class CJournalList extends MJournalList
 
         return $list;
     }
+
+    public function getValuesForSelect()
+    {
+        $response = $this->receiveValuesForSelect();
+        while($result[] = mysqli_fetch_assoc($response)){}
+        return $result;
+    }
 }

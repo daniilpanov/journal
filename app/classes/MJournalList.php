@@ -6,7 +6,7 @@ class MJournalList
 {
     protected function receiveJournalList($choose)
     {
-        $sql = "SELECT * FROM journal.journal_list";
+        $sql = "SELECT name, surname, subject, mark, date FROM journal.journal_list";
 
         if (!empty($choose))
         {
@@ -29,6 +29,13 @@ class MJournalList
 
         echo "<br>".$sql;
         $result = Db::getInstance()->sql($sql);
+        return $result;
+    }
+
+    protected function receiveValuesForSelect()
+    {
+        $sql = "SELECT * FROM journal.students;SELECT * FROM journal.subjects";
+        $result = Db::getInstance()->multiSql($sql);
         return $result;
     }
 }
