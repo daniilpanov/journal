@@ -6,5 +6,5 @@ function __autoload($name)
     require_once($name.'.php');
 }
 
-// СОЗДАЁМ ОБЪЕКТЫ
+// СОЗДАЁМ ОБЪЕКТЫ КОНТРОЛЛЕРОВ
 $journal_list = new \app\classes\CJournalList(); // для работы с журналом

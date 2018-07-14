@@ -50,7 +50,11 @@ class Db extends Config
         mysqli_query(self::$handler, "set names utf8") or die ("set names utf8 failed");
     }
 
-    // реализация запроса к БД
+    // РЕАЛИЗАЦИЯ ЗАПРОСА К БД
+    /**
+     * @param string
+     * @return bool|\mysqli_result
+     */
     public function sql($query)
     {
         $result = mysqli_query(self::$handler, $query);
@@ -64,14 +68,15 @@ class Db extends Config
         return $result;
     }
 
-    public function multiSql($query)
+    /**
+     * @param array
+     * @return array|\mysqli_result
+     */
+    public function multiSql($queries)
     {
-        $result = mysqli_multi_query(self::$handler, $query);
-
-        // если запрос не удался, выдаем сообщение об ошибке
-        if (!$result)
+        foreach ($queries as $query)
         {
-            die ("<h1>Ошибка запроса к базе данных</h1>");
+            $result[] = $this->sql($query);
         }
 
         return $result;

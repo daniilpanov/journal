@@ -1,5 +1,5 @@
 <?php
-var_export($unique = $journal_list->getValuesForSelect());
+$for_select = $journal_list->getValuesForSelect();
 
 if(!$_POST)
 {
@@ -15,18 +15,33 @@ elseif ($_POST)
         <thead>
         <tr>
             <?php
-            foreach ($unique as $val)
+            foreach ($for_select as $select_name => $i)
             {
-                foreach ($val as $col_name => $un)
+                echo "<th><select name='{$select_name}'><option value='' selected>--все--</option>";
+                foreach ($i as $val)
                 {
-                    echo "<th>";
-                        echo "<select name='{$col_name}'>";
-                        echo "<option value='{$un}'>{$un}</option>";
-                        echo "</select>";
-                    echo "</th>";
+                    foreach ($val as $one_select)
+                    {
+                        echo "<option value='{$one_select}'>{$one_select}</option>";
+                    }
                 }
+                echo "</th></select>";
             }
             ?>
+            <th>
+                <select name="mark">
+                    <option value="" selected>--все--</option>
+                    <?php
+                    for($i = 1; $i <= 5; $i++)
+                    {
+                        echo "<option value='{$i}'>{$i}</option>";
+                    }
+                    ?>
+                </select>
+            </th>
+            <th><input type="date" name="date"></th>
+            <th><button type="submit">Выбрать</button></th>
+            <th><button type="button" onclick="document.location.href = 'http://localhost/journal/?page=journal_list'">Очистить</button></th>
         </tr>
         <tr>
             <th>Имя</th>
