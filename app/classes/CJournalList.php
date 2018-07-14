@@ -19,12 +19,18 @@ class CJournalList extends MJournalList
                 unset($choose[$key]);
             }
         }
-
-        $response = $this->receiveJournalList($choose);
-
-        while ($row = mysqli_fetch_assoc($response))
+        if (count($choose) != 0)
         {
-            $list[] = $row;
+            $response = $this->receiveJournalList($choose);
+
+            while ($row = mysqli_fetch_assoc($response))
+            {
+                $list[] = $row;
+            }
+        }
+        else
+        {
+            $list = false;
         }
 
         return $list;
