@@ -12,7 +12,8 @@ class MJournalList
      */
     protected function receiveJournalList($choose)
     {
-        $sql = "SELECT `name`, `surname`, `subject`, `mark`, `date` FROM journal.journal_list";// Начальный sql-запрос
+        // Начальный sql-запрос
+        $sql = "SELECT `name`, `surname`, `subject`, `mark`, `date` FROM journal.journal_list";
 
         // Если что-то выбрано пользователем, то
         if ($choose !== null)

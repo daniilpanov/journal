@@ -12,25 +12,33 @@ class CJournalList extends MJournalList
      */
     public function getJournalList($choose = null)
     {
+        // Удаляем пустые элементы массива(если ничего не выбрано)
+        // КАК ПРОИСХОДИТ УДАЛЕНИЕ:
+        // 1. Перебираем массив choose как ключ и значение
         foreach ($choose as $key => $value)
         {
-            if ($value == '')
+            // 2. Проверка(ести значение choose равно ""(пусто))
+            if ($value == '' or $value == "")
             {
+                // 3. Удаление(удаляем элемент массива choose с ключом $key)
                 unset($choose[$key]);
             }
         }
-        if (count($choose) != 0)
-        {
-            $response = $this->receiveJournalList($choose);
 
-            while ($row = mysqli_fetch_assoc($response))
-            {
-                $list[] = $row;
-            }
-        }
-        else
+        // Если после удаления пустых элементов из массива choose
+        // в нём ничего не осьалось, то $choose = null
+        if (count($choose) === 0)
         {
-            $list = false;
+            $choose = null;
+        }
+
+        // Запрос к БД
+        $response = $this->receiveJournalList($choose);
+
+        // Делаем резулльтат запроса к БД читабельным
+        while ($row = mysqli_fetch_assoc($response))
+        {
+            $list[] = $row;
         }
 
         return $list;
@@ -52,7 +60,7 @@ class CJournalList extends MJournalList
             }
         }
         $for_select['subject'] = $result;
-        unset($result);
+        unset($result, $response);
 
         $response = $this->getValue("students", 'name');
         while ($row = mysqli_fetch_assoc($response))
@@ -63,7 +71,7 @@ class CJournalList extends MJournalList
             }
         }
         $for_select['name'] = $result;
-        unset($result);
+        unset($result, $response);
 
         $response = $this->getValue("students", 'surname');
         while ($row = mysqli_fetch_assoc($response))
@@ -74,7 +82,7 @@ class CJournalList extends MJournalList
             }
         }
         $for_select['surname'] = $result;
-        unset($result);
+        unset($result, $response);
 
         return $for_select;
     }
