@@ -18,7 +18,7 @@ elseif ($_POST)
             <?php
             foreach ($for_select as $select_name => $i)
             {
-                echo "<th><select name='{$select_name}'>";
+                echo "<th><select name='{$select_name}[]' multiple>";
 
                 if (!$_POST || $_POST[$select_name] == '')
                 {
@@ -46,7 +46,7 @@ elseif ($_POST)
             }
             ?>
             <th>
-                <select name="mark">
+                <select name="mark[]" multiple>
                     <?php
                     if (!$_POST || $_POST["mark"] == '')
                     {
@@ -90,7 +90,7 @@ elseif ($_POST)
             <th>Фамилия</th>
             <th>Предмет</th>
             <th>Оценка</th>
-            <th>Дата</th>
+            <th>Дата(гггг.мм.дд)</th>
         </tr>
         </thead>
         <?php

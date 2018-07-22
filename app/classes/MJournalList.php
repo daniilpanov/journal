@@ -7,39 +7,11 @@ class MJournalList
     /**
      * This method use for get all information
      * from table `journal_list`
-     * @param $choose array
+     * @param $sql string
      * @return mixed|\mysqli_result
      */
-    protected function receiveJournalList($choose)
+    protected function receiveJournalList($sql)
     {
-        // Начальный sql-запрос
-        $sql = "SELECT `name`, `surname`, `subject`, `mark`, `date` FROM journal.journal_list";
-
-        // Если что-то выбрано пользователем, то
-        if ($choose !== null)
-        {
-            // добавляем в переменную с запросом "WHERE".
-            $sql .= " WHERE";
-
-            // После этого - считаем кол-во элементов в массиве choose
-            $count = count($choose);
-            // и объявляем переменную для счёта.
-            $counter = 1;
-
-            // В цикле 'foreach' перебираем массив $choose как ключ и значение
-            // (ключ - имя столбца, а значение - его значение).
-            //    ДАЛЬШЕ - ВСЁ ЯСНО
-            foreach ($choose as $col => $value)
-            {
-                $sql .= " `{$col}` = '{$value}'";
-                if ($counter != $count)
-                {
-                    $sql .= " AND";// если дальше будет ещё что-нибудь - добавляем "AND"
-                    $counter++;
-                }
-            }
-        }
-
         $result = Db::getInstance()->sql($sql);
         return $result;
     }

@@ -5,6 +5,9 @@ function __autoload($name)
     $name = str_replace('\\', '/', $name);
     require_once($name.'.php');
 }
+echo "ok";
+require_once "config/ini.php";
+echo "ok";
 ?>
 <!DOCTYPE html>
 <html lang="ru-RU">
