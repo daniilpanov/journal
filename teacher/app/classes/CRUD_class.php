@@ -4,7 +4,7 @@ namespace app\classes;
 
 class CRUD_class
 {
-    public function getQueryForAdd($post, $table)
+    public function getQueryForAdd($table, $post)
     {
         $sql = "INSERT INTO {$table}(";
         $cols = "";
@@ -48,5 +48,10 @@ class CRUD_class
         $sql .= $cols.")".$values.")";
 
         return $sql;
+    }
+
+    public function getValues($table, $select = "*")
+    {
+
     }
 }

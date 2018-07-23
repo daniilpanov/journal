@@ -1,11 +1,13 @@
 <?php
-echo "ok";
-function __autoload($name)
+
+session_start();
+
+function __autoload($namespace)
 {
     // конвертируем полный путь в пространстве имён с \ в /
-    $name = str_replace('\\', '/', $name);
-    require_once($name.'.php');
+    $namespace = str_replace('\\', '/', $namespace);
+    require_once($namespace.'.php');
 }
-echo "ok";
+
 // СОЗДАЁМ ОБЪЕКТЫ КОНТРОЛЛЕРОВ
 $students = new \app\classes\CStudents();
