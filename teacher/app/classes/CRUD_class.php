@@ -4,54 +4,59 @@ namespace app\classes;
 
 class CRUD_class
 {
-    public function getQueryForAdd($table, $post)
+    /**
+     * @param $table string
+     * @param $post array|mixed
+     * @param string $button_key Default = "" (null)
+     * @return string
+     */
+    public function getQueryForAdd($table, $post, $button_key = "")
     {
+        unset($post[$button_key]);
+
         $sql = "INSERT INTO {$table}(";
+
         $cols = "";
-        $values = " VALUES(";
-        $queries = 1;
+        $values = "";
+
         foreach ($post as $col => $value)
         {
-            if (empty($value) or $value == '')
+            if (empty($value) OR $value == '')
             {
                 unset($post[$col]);
             }
             else
             {
                 $cols .= "`{$col}`, ";
-
-                if (is_array($value))
-                {
-                    foreach ($value as $key => $item)
-                    {
-                        if (empty($item) or $item == '')
-                        {
-                            unset($post[$col][$key]);
-                        }
-                        else
-                        {
-                            $queries++;
-                            $values .= "'{$value}', ";
-                        }
-                    }
-                }
-                else
-                {
-                    $values .= "'{$value}', ";
-                }
+                $values .= "'{$value}', ";
             }
         }
 
         $cols = substr($cols, 0, -2);
         $values = substr($values, 0, -2);
+        $sql .= $cols.") VALUES(".$values.")";
 
-        $sql .= $cols.")".$values.")";
-
+        echo $sql;
         return $sql;
     }
 
-    public function getValues($table, $select = "*")
+    /**
+     * @param $table string
+     * @param $select string Default = " * "(all columns)
+     * @param $where string Default = "`id`"
+     * @param $cols string
+     * @return string
+     */
+    public function getValues($table, $select = "*", $where = null, $cols = null)
     {
+        $sql = "SELECT {$select} FROM {$table}";
 
+
+        if ($where !== null AND $cols !== null)
+        {
+            $sql .= " WHERE {$where} = {$cols}";
+        }
+
+        return $sql;
     }
 }

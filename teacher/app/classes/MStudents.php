@@ -6,18 +6,22 @@ class MStudents
 {
     protected function getStudents($student_id)
     {
-        $sql = "SELECT * FROM journal.students";
-        if ($student_id !== null)
-        {
-            $sql .= " WHERE `id` = '{$student_id}'";
-        }
+        $CRUD = new CRUD_class();
+
+        $sql = $CRUD->getValues("students", "*", "`id`", $student_id);
+
         $result = Db::getInstance()->sql($sql);
         return $result;
     }
 
-    protected function addStudents($sql)
+    protected function addStudents($post)
     {
+        $CRUD = new CRUD_class();
+
+        $sql = $CRUD->getQueryForAdd('students', $post, 'addStudent');
+
         $result = Db::getInstance()->sql($sql);
+
         return $result;
     }
 

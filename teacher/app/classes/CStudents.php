@@ -6,11 +6,7 @@ class CStudents extends MStudents
 {
     public final function addStudents($post)
     {
-        $crud = new CRUD_class();
-
-        $sql = $crud->getQueryForAdd($post, 'students');
-
-        parent::addStudents($sql);
+        parent::addStudents($post);
     }
 
     public final function getStudents($student_id = null)

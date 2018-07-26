@@ -1,1 +1,1 @@
-<a href="?page=addStudents">Добавление студентов</a>
+<a href="?page=studentsList">Управление информацией о учениках</a>
