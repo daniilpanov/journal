@@ -10,4 +10,5 @@ function __autoload($namespace)
 }
 
 // СОЗДАЁМ ОБЪЕКТЫ КОНТРОЛЛЕРОВ
-$students = new \app\classes\CStudents();
+$students = new \app\classes\CStudents(); // Ученики
+$subjects = new \app\classes\CSubjects(); // Предметы

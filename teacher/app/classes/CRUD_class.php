@@ -63,11 +63,12 @@ class CRUD_class
     /**
      * @param $table string
      * @param $post array
+     * @param string $primary_key Default = 'id'
      * @return string
      */
-    public function getQueryForEdit($table, $post)
+    public function getQueryForEdit($table, $post, $primary_key = 'id')
     {
-        $id = $post['id'];
+        $primary_value = $post[$primary_key];
 
         $sql = "UPDATE {$table} SET ";
 
@@ -78,7 +79,7 @@ class CRUD_class
 
         $sql = substr($sql, 0, -2);
 
-        $sql .= " WHERE `id` = {$id}";
+        $sql .= " WHERE `{$primary_key}` = '{$primary_value}'";
 
         return $sql;
     }
@@ -88,11 +89,16 @@ class CRUD_class
      * @param $post array
      * @return string
      */
-    public function getQueryForDelete($table, $id)
+    public function getQueryForDelete($table, $post)
     {
         $sql = "DELETE FROM {$table} ";
 
-        $sql .= "WHERE `id` = {$id}";
+        $sql .= "WHERE ";
+
+        foreach ($post as $col => $value)
+        {
+            $sql .= "`{$col}` = '{$value}'";
+        }
 
         return $sql;
     }

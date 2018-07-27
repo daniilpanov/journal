@@ -33,11 +33,11 @@ class MStudents
         Db::getInstance()->sql($sql);
     }
 
-    protected function deleteStudents($id)
+    protected function deleteStudents($student)
     {
         $CRUD = new CRUD_class();
 
-        $sql = $CRUD->getQueryForDelete('students', $id);
+        $sql = $CRUD->getQueryForDelete('students', $student);
 
         Db::getInstance()->sql($sql);
     }

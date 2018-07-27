@@ -62,7 +62,7 @@ class Db extends Config
         // если запрос не удался, выдаем сообщение об ошибке
         if (!$result)
         {
-            die ("<h1>Ошибка запроса к базе данных</h1>");
+            die ("<h1>Ошибка запроса к базе данных</h1>".mysqli_error(self::$handler));
         }
 
         return $result;

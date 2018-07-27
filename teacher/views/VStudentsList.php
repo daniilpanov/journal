@@ -1,27 +1,29 @@
-<table id="editCreate">
+<table class="list">
     <tr>
         <td>
             <form method="post">
-                <table id="studentsList">
-                    <thead>
+                <table class="form_body">
+                    <thead class="list_header">
                     <tr><th></th><th>Имя</th><th>Фамилия</th></tr>
                     </thead>
                     <tbody>
                     <?php
                     $all_students = $students->getStudents();
+
                     $counter = 1;
 
                     foreach ($all_students as $one_student)
                     {
-                        echo "<tr class='row'>";
-                        echo "<td>{$counter}.&emsp;</td>
-                        <td>
-                            <input type='text' name='{$counter}[name]' value='{$one_student['name']}'>
-                        </td>
-                        <td>
-                            <input type='text' name='{$counter}[surname]' value='{$one_student['surname']}'>
-                        </td><input type='hidden' name='{$counter}[id]' value='{$one_student['id']}'>";
-                        echo "</tr>";
+                        echo "<tr class='row'>
+                            <td>{$counter}.&emsp;</td>
+                            <td>
+                                <input type='text' name='{$counter}[name]' value='{$one_student['name']}'>
+                            </td>
+                            <td>
+                                <input type='text' name='{$counter}[surname]' value='{$one_student['surname']}'>
+                            </td>
+                            <input type='hidden' name='{$counter}[id]' value='{$one_student['id']}'>
+                        </tr>";
                         $counter++;
                     }
                     ?>

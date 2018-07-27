@@ -14,7 +14,7 @@ if ($_POST)
                 break;
 
             case "addSubjects":
-
+                $subjects->addSubjects($_POST);
                 break;
 
             case "addMarks":
@@ -27,19 +27,20 @@ if ($_POST)
                 break;
 
             case "deleteSubjects":
-
+                $subjects->deleteSubjects($_POST);
                 break;
 
             case "deleteMarks":
 
                 break;
+
             // EDIT
             case "editStudents":
                 $students->editStudents($_POST);
                 break;
 
             case "editSubjects":
-
+                $subjects->editSubjects($_POST);
                 break;
 
             case "editMarks":
