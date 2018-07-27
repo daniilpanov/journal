@@ -6,7 +6,7 @@ class CRUD_class
 {
     /**
      * @param $table string
-     * @param $post array|mixed
+     * @param $post array
      * @param string $button_key Default = "" (null)
      * @return string
      */
@@ -34,9 +34,9 @@ class CRUD_class
 
         $cols = substr($cols, 0, -2);
         $values = substr($values, 0, -2);
+
         $sql .= $cols.") VALUES(".$values.")";
 
-        echo $sql;
         return $sql;
     }
 
@@ -56,6 +56,43 @@ class CRUD_class
         {
             $sql .= " WHERE {$where} = {$cols}";
         }
+
+        return $sql;
+    }
+
+    /**
+     * @param $table string
+     * @param $post array
+     * @return string
+     */
+    public function getQueryForEdit($table, $post)
+    {
+        $id = $post['id'];
+
+        $sql = "UPDATE {$table} SET ";
+
+        foreach ($post as $col => $value)
+        {
+            $sql .= "`{$col}` = '{$value}', ";
+        }
+
+        $sql = substr($sql, 0, -2);
+
+        $sql .= " WHERE `id` = {$id}";
+
+        return $sql;
+    }
+
+    /**
+     * @param $table string
+     * @param $post array
+     * @return string
+     */
+    public function getQueryForDelete($table, $id)
+    {
+        $sql = "DELETE FROM {$table} ";
+
+        $sql .= "WHERE `id` = {$id}";
 
         return $sql;
     }

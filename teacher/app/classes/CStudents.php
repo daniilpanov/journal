@@ -27,4 +27,22 @@ class CStudents extends MStudents
 
         return $result;
     }
+
+    public function editStudents($post)
+    {
+        unset($post['editStudents']);
+
+        foreach ($post as $item)
+        {
+            parent::editStudents($item);
+        }
+    }
+
+    public function deleteStudents($post)
+    {
+        foreach ($post['delete'] as $id)
+        {
+            parent::deleteStudents($id);
+        }
+    }
 }

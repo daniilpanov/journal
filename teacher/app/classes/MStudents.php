@@ -11,6 +11,7 @@ class MStudents
         $sql = $CRUD->getValues("students", "*", "`id`", $student_id);
 
         $result = Db::getInstance()->sql($sql);
+
         return $result;
     }
 
@@ -18,16 +19,26 @@ class MStudents
     {
         $CRUD = new CRUD_class();
 
-        $sql = $CRUD->getQueryForAdd('students', $post, 'addStudent');
+        $sql = $CRUD->getQueryForAdd('students', $post, 'addStudents');
 
-        $result = Db::getInstance()->sql($sql);
-
-        return $result;
+        Db::getInstance()->sql($sql);
     }
 
-    protected function editStudents($sql)
+    protected function editStudents($post)
     {
-        $result = Db::getInstance()->sql($sql);
-        return $result;
+        $CRUD = new CRUD_class();
+
+        $sql = $CRUD->getQueryForEdit('students', $post);
+
+        Db::getInstance()->sql($sql);
+    }
+
+    protected function deleteStudents($id)
+    {
+        $CRUD = new CRUD_class();
+
+        $sql = $CRUD->getQueryForDelete('students', $id);
+
+        Db::getInstance()->sql($sql);
     }
 }
