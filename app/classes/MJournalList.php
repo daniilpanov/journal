@@ -21,13 +21,19 @@ class MJournalList
      * information from any tables
      * @param string $table
      * @param string $value Default = "*"(all)
+     * @param string $unique Default = null
      * @return string|array|mixed|\mysqli_result
      */
-    protected function getValue($table, $value = "*")
+    protected function getValue($table, $value = "*", $unique = null)
     {
         // УНИВЕРСАЛЬНЫЙ МЕТОД ДЛЯ ЗАПРОСА К БД
         // без комментариев(всё итак понятно)
-        $sql = "SELECT {$value} FROM journal.{$table}";
+        $sql = "SELECT ";
+        if ($unique !== null)
+        {
+            $sql .= "DISTINCT ";
+        }
+        $sql .= "{$value} FROM journal.{$table}";
 
         $result = Db::getInstance()->sql($sql);
 

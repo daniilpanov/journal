@@ -35,7 +35,7 @@ class CJournalList extends MJournalList
         }
 
         // Начальный sql-запрос
-        $sql = "SELECT `name`, `surname`, `subject`, `mark`, `date`, `form` FROM journal.journal_list";
+        $sql = "SELECT `name`, `surname`, `subject`, `form`, `mark`, `date` FROM journal.journal_list";
 
         // Если что-то выбрано пользователем, то
         if ($choose !== null)
@@ -118,7 +118,7 @@ class CJournalList extends MJournalList
         $for_select['surname'] = $result;
         unset($result, $response);
 
-        $response = $this->getValue("subjects");
+        $response = $this->getValue("subjects", "subject");
         while ($row = mysqli_fetch_assoc($response))
         {
             if ($row != null)
@@ -127,6 +127,17 @@ class CJournalList extends MJournalList
             }
         }
         $for_select['subject'] = $result;
+        unset($result, $response);
+
+        $response = $this->getValue("students", "form", "");
+        while ($row = mysqli_fetch_assoc($response))
+        {
+            if ($row != null)
+            {
+                $result[] = $row;
+            }
+        }
+        $for_select['form'] = $result;
         unset($result, $response);
 
         return $for_select;
