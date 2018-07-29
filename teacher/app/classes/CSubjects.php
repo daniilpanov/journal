@@ -9,20 +9,13 @@ class CSubjects extends MSubjects
         parent::addSubjects($post);
     }
 
-    public final function getSubjects($subject = null)
+    public final function getSubjects($subject_id)
     {
-        $response = parent::getSubjects($subject);
+        $response = parent::getSubjects($subject_id);
 
-        if ($subject === null)
+        while ($row = mysqli_fetch_assoc($response))
         {
-            while ($row = mysqli_fetch_assoc($response))
-            {
-                $result[] = $row;
-            }
-        }
-        else
-        {
-            $result = mysqli_fetch_assoc($response);
+            $result = explode(", ", $row['subjects']);
         }
 
         return $result;

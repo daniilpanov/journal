@@ -4,11 +4,12 @@
             <form method="post">
                 <table class="form_body">
                     <thead class="list_header">
-                    <tr><th></th><th>Предмет</th></tr>
+                    <tr><th class="empty-col"></th><th>Предмет</th></tr>
                     </thead>
-                    <tbody>
+                    <tbody class="list_body">
                     <?php
-                    $all_subjects = $subjects->getSubjects();
+                    $all_subjects = $subjects->getSubjects($_SESSION['authorized']);
+
                     $counter = 1;
 
                     foreach ($all_subjects as $one_subject)
@@ -16,7 +17,7 @@
                         echo "<tr class='row'>
                             <td>{$counter}.&emsp;</td>
                             <td>
-                                <input type='text' name='{$counter}[subject]' value='{$one_subject['subject']}'>
+                                <input type='text' name='{$counter}[subject]' value='{$one_subject}'>
                             </td>
                         </tr>";
                         $counter++;
@@ -29,6 +30,7 @@
         </td>
         <th>
             <a href="?page=addSubjects" title="Создать ">&emsp;&plus;&emsp;</a>
+            <br />
             <a href="?page=deleteSubjects" title="Удалить ">&emsp;&minus;&emsp;</a>
         </th>
     </tr>

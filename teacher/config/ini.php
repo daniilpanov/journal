@@ -1,5 +1,5 @@
 <?php
-
+//
 session_start();
 
 function __autoload($namespace)
@@ -8,7 +8,12 @@ function __autoload($namespace)
     $namespace = str_replace('\\', '/', $namespace);
     require_once($namespace.'.php');
 }
+// FIRST CONTROLLERS
+// <p>  SIGN IN:  </p>
+$sign_in = new \app\classes\CSignIn();
+// AND <p>  SIGN UP:  </p>
+$sign_up = new \app\classes\CSignUp();
 
-// СОЗДАЁМ ОБЪЕКТЫ КОНТРОЛЛЕРОВ
-$students = new \app\classes\CStudents(); // Ученики
-$subjects = new \app\classes\CSubjects(); // Предметы
+// ANOTHER CONTROLLERS:
+$students = new \app\classes\CStudents(); // Students
+$subjects = new \app\classes\CSubjects(); // Subjects

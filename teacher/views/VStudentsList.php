@@ -1,12 +1,12 @@
-<table class="list">
+<table>
     <tr>
         <td>
             <form method="post">
-                <table class="form_body">
+                <table class="list">
                     <thead class="list_header">
-                    <tr><th></th><th>Имя</th><th>Фамилия</th></tr>
+                    <tr><th class="empty-col"></th><th>Имя</th><th>Фамилия</th></tr>
                     </thead>
-                    <tbody>
+                    <tbody class="list_body">
                     <?php
                     $all_students = $students->getStudents();
 
@@ -34,6 +34,7 @@
         </td>
         <th>
             <a href="?page=addStudents" title="Создать ">&emsp;&plus;&emsp;</a>
+            <br />
             <a href="?page=deleteStudents" title="Удалить ">&emsp;&minus;&emsp;</a>
         </th>
     </tr>

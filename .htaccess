@@ -1,8 +1,5 @@
 AddDefaultCharset UTF-8
 
-#Если страница не существует
-ErrorDocument 404 http://localhost/journal/404.php
-
 #Отключаем magic_quotes_gpc
 php_flag magic_quotes_gpc Off
 php_flag magic_quotes_runtime Off
@@ -13,3 +10,18 @@ php_value error_reporting 1
 
 #Включаем поддержку коротких тегов
 php_flag short_open_tag on
+
+#ВСЕ ОШИБКИ:
+
+#1. ОШИБКИ КЛИЕНТА:
+# -- Если страница не существует
+ErrorDocument 404 http://localhost/journal/error.php?error_code=404
+
+#END ОШИБКИ КЛИЕНТА
+
+
+#2. ОШИБКИ СЕРВЕРА:
+# -- Если
+ErrorDocument 500 http://localhost/journal/error.php?error_code=500
+
+#END ОШИБКИ СЕРВЕРА

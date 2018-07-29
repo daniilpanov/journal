@@ -22,7 +22,7 @@
                             checkboxes[i].checked = false;
                         }
                     }
-                    ">
+                ">
             </th>
             <th>Предмет</th>
         </tr>

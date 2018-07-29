@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 function __autoload($name)
 {
@@ -7,5 +8,11 @@ function __autoload($name)
     require_once($name.'.php');
 }
 
-// СОЗДАЁМ ОБЪЕКТЫ КОНТРОЛЛЕРОВ
-$journal_list = new \app\classes\CJournalList(); // для работы с журналом
+// FIRST CONTROLLERS FOR
+// <p>  SIGN IN  </p>
+    $sign_in = new \app\classes\CSignIn();
+// AND <p>  SIGN UP  </p>
+    $sign_up = new \app\classes\CSignUp();
+
+// ANOTHER CONTROLLERS:
+    $journal_list = new \app\classes\CJournalList(); // для работы с журналом

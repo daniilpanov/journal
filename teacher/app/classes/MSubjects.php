@@ -4,11 +4,11 @@ namespace app\classes;
 
 class MSubjects
 {
-    protected function getSubjects($subject)
+    protected function getSubjects($subject_id)
     {
         $CRUD = new CRUD_class();
 
-        $sql = $CRUD->getValues("subjects", "*", "`name`", $subject);
+        $sql = $CRUD->getValues("teachers", "subjects", "`id`", $subject_id);
 
         $result = Db::getInstance()->sql($sql);
 

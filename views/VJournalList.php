@@ -1,9 +1,8 @@
 <?php
-$for_select = $journal_list->getValuesForSelect();
+$for_select = $journal_list->getAllSubjects();
 
 if(!$_POST)
 {
-
     $list = $journal_list->getJournalList();
 }
 elseif ($_POST)
@@ -15,81 +14,66 @@ elseif ($_POST)
     <table>
         <thead>
         <tr>
-            <?php
-            foreach ($for_select as $select_name => $i)
-            {
-                echo "<th><select name='{$select_name}[]' multiple>";
-
-                if (!$_POST || $_POST[$select_name] == '')
-                {
-                    echo "<option value='' selected>--все--</option>";
-                }
-                else
-                {
-                    echo "<option value=''>--все--</option>";
-                }
-                foreach ($i as $val)
-                {
-                    foreach ($val as $one_select)
-                    {
-                        if ($_POST[$select_name] == $one_select)
-                        {
-                            echo "<option value='{$one_select}' selected>{$one_select}</option>";
-                        }
-                        else
-                        {
-                            echo "<option value='{$one_select}'>{$one_select}</option>";
-                        }
-                    }
-                }
-                echo "</th></select>";
-            }
-            ?>
             <th>
-                <select name="mark[]" multiple>
+                <table class=\"dropdown-checkboxes\">
                     <?php
-                    if (!$_POST || $_POST["mark"] == '')
+                    foreach ($for_select as $val)
                     {
-                        echo "<option value='' selected>--все--</option>";
-                    }
-                    else
-                    {
-                        echo "<option value=''>--все--</option>";
-                    }
-                    for($i = 1; $i <= 5; $i++)
-                    {
-                        if ($_POST["mark"] == $i)
+                        foreach ($val as $key => $one_select)
                         {
-                            echo "<option value='{$i}' selected>{$i}</option>";
-                        }
-                        else
-                        {
-                            echo "<option value='{$i}'>{$i}</option>";
+                            echo "<tr><td><label><input type='checkbox' name='subject[]' value='{$one_select}'";
+
+                            for ($i = 0; $i <= count($val)-1; $i++)
+                            {
+                                if ($_POST['subject'][$i] == $one_select)
+                                {
+                                    echo " checked";
+                                }
+                            }
+
+                            echo ">{$one_select}</label></td></tr>";
                         }
                     }
                     ?>
-                </select>
+                </table>
+            </th>
+            <th>
+                <table class="dropdown-checkboxes">
+                    <?php
+                    for($i = 1; $i <= 5; $i++)
+                    {
+                        echo "<tr><td><label><input type='checkbox' name='mark[]' value='{$i}'";
+
+                        for ($c = 0; $c <=4; $c++)
+                        {
+                            if ($_POST['mark'][$c] == $i)
+                            {
+                                echo " checked";
+                            }
+                        }
+
+                        echo ">{$i}</label></td></tr>";
+                    }
+                    ?>
+                </table>
             </th>
             <th>
                 <?php
+                echo "<input type='date' name='date'";
 
                 if ($_POST["date"])
                 {
-                    echo "<input type='date' name='date' value='{$_POST['date']}'>";
+                    echo " value='{$_POST['date']}'";
                 }
-                else
-                {
-                    echo "<input type=\"date\" name=\"date\">";
-                }?>
+
+                echo ">";
+                ?>
             </th>
-            <th><button type="submit">Выбрать</button></th>
+            <th><button type="submit" name="choose">Выбрать</button></th>
             <th><button type="reset" onclick="document.location.href = 'http://localhost/journal/?page=journal_list'">Очистить</button></th>
         </tr>
         <tr>
-            <th>Имя</th>
-            <th>Фамилия</th>
             <th>Предмет</th>
-            <th>Класс</th>
             <th>Оценка</th>
             <th>Дата(гггг.мм.дд)</th>
         </tr>
