@@ -1,24 +1,33 @@
 <?php
 require_once "views/VMenu.php";
+?>
+<div id="content">
+    <?php
 
-/**
- * @todo МАРШРУТИЗАТОР
- * проверка $_GET с помощью switch
- */
-if ($_GET)
-{
-    if ($_GET['exit'] == 'true')
+    /**
+     * @todo МАРШРУТИЗАТОР
+     * проверка $_GET с помощью switch
+     */
+    if ($_GET)
     {
-        unset($_SESSION['authorized']);
-        header("Location: index.php");
-    }
-    elseif (isset($_GET['page']))
-    {
-        switch ($_GET['page'])
+        foreach ($_GET as $page => $value)
         {
-            case 'journal_list':
-                require_once "views/VJournalList.php";
-                break;
+            switch ($page)
+            {
+                case "exit":
+                    unset($_SESSION['authorised']);
+                    header("Location: index.php");
+                    break;
+                case "page":
+                    switch ($value)
+                    {
+                        case 'journal_list':
+                            require_once "views/VJournalList.php";
+                            break;
+                    }
+                    break;
+            }
         }
     }
-}
+    ?>
+</div>

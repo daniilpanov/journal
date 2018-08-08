@@ -1,5 +1,5 @@
 <body>
-<?php
-require_once "routers/MAINRouter.php";
-?>
-</body>
+<main>
+    <?php
+    require_once "routers/MAINRouter.php";
+    ?>

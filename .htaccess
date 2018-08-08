@@ -1,3 +1,4 @@
+#Кодировка по умолчанию
 AddDefaultCharset UTF-8
 
 #Отключаем magic_quotes_gpc
@@ -13,15 +14,15 @@ php_flag short_open_tag on
 
 #ВСЕ ОШИБКИ:
 
-#1. ОШИБКИ КЛИЕНТА:
-# -- Если страница не существует
+#1. ОШИБКИ КЛИЕНТА ( #4xx ):
+# -- Если страница не существует ( #404):
 ErrorDocument 404 http://localhost/journal/error.php?error_code=404
 
 #END ОШИБКИ КЛИЕНТА
 
 
-#2. ОШИБКИ СЕРВЕРА:
-# -- Если
+#2. ОШИБКИ СЕРВЕРА ( #5xx ):
+# -- Если ... ( #500 ):
 ErrorDocument 500 http://localhost/journal/error.php?error_code=500
 
 #END ОШИБКИ СЕРВЕРА

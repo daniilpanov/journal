@@ -27,7 +27,7 @@ class CJournalList extends MJournalList
      */
     public function getJournalList($choose = null)
     {
-        $student = $this->getStudentInfo($_SESSION['authorized']);
+        $student = $this->getStudentInfo($_SESSION['authorised']);
 
         // Начальный sql-запрос
         $sql = "SELECT `subject`, `mark`, `date` FROM journal.journal_list";

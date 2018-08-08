@@ -1,11 +1,13 @@
 <?php
-if ($_SESSION['authorized'])
+// Если посетитель авторизировался
+if (isset($_SESSION['authorised']))
 {
-    echo "<p><a href='?exit=true'>Назад</a></p>";
-
+    // подключаем роутер для авторизированого пользователя.
     require_once "routers/userRouter.php";
 }
+// Иначе:
 else
 {
+    // подключаем роутер для авторизации
     require_once "routers/authorizationRouter.php";
 }

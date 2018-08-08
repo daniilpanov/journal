@@ -1,4 +1,4 @@
-<form method="post">
+<form method="post" action="index.php">
     <p>
         <label>
             Логин: &emsp;

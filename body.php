@@ -1,7 +1,15 @@
+<!-- TAG " BODY " -->
 <body>
-<header>
-    <!--Здесь должны быть эмблема и поиск на сайте-->
-</header>
+
 <?php
-require_once "routers/MAINRouter.php";
+// ALL MENUS
+require_once "views/VTopMenu.php";
+require_once "views/VSidebarMenu.php";
 ?>
+
+<!-- ТЕГ " MAIN " ДЛЯ ОСНОВНОГО ТЕЛА САЙТА ( контента ) -->
+<main>
+    <?php
+    // ROUTER
+    require_once "routers/MAINRouter.php";
+    ?>

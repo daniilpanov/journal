@@ -11,7 +11,7 @@ class MSignIn
      */
     protected function signIn($login, $password)
     {
-        $sql = "SELECT id FROM journal.teachers WHERE login = '{$login}' AND password = '{$password}'";
+        $sql = "SELECT id FROM journal.students WHERE login = '{$login}' AND password = '{$password}'";
 
         $result = Db::getInstance()->sql($sql);
 

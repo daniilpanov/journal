@@ -11,7 +11,6 @@ elseif ($_GET['exit'] == 'true')
 }
 else
 {
-    echo "<a href='?exit=true'>Выход</a>";
 
     require_once "views/VMenu.php";
 
