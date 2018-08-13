@@ -1,5 +1,5 @@
 <div id="signIn">
-    <form method="post">
+    <form method="post" action="index.php">
         <p>
             <label>
                 Логин: &emsp;
@@ -15,10 +15,10 @@
         <p>
             <label>
                 Войти как: &emsp;
-                <select name="SingInAs">
+                <select name="signInAs">
                     <option value="student">ученик</option>
-                    <option value="student">учитель</option>
-                    <option value="student">директор</option>
+                    <option value="teacher">учитель</option>
+                    <option value="director">директор</option>
                 </select>
             </label>
         </p>

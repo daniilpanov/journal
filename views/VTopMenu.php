@@ -20,7 +20,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <form id="search" class="navbar-form navbar-left" role="search" method="get">
+                    <form class="navbar-form navbar-left" role="search" method="get">
                         <div class="form-group">
                             <input type="search" class="form-control" placeholder="Search" name="search">
                         </div>

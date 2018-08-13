@@ -9,6 +9,7 @@ require_once "views/VSidebarMenu.php";
 
 <!-- ТЕГ " MAIN " ДЛЯ ОСНОВНОГО ТЕЛА САЙТА ( контента ) -->
 <main>
+    <hr>
     <?php
     // ROUTER
     require_once "routers/MAINRouter.php";

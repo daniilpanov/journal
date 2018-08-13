@@ -25,7 +25,7 @@ elseif ($_POST)
 
                             for ($i = 0; $i <= count($val)-1; $i++)
                             {
-                                if ($_POST['subject'][$i] == $one_select)
+                                if ($_POST['subjects'][$i] == $one_select)
                                 {
                                     echo " checked";
                                 }

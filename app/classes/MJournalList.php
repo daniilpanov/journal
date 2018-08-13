@@ -19,21 +19,11 @@ class MJournalList
     /**
      * This method use for get some or all
      * information from any tables
-     * @param string $table
-     * @param string $value Default = "*"(all)
-     * @param bool $unique Default = null
-     * @return array|mixed|\mysqli_result
+     * @return array|\mysqli_result
      */
-    protected function getValue($table, $value = "*", $unique = false)
+    protected function getAllSubjects()
     {
-        // УНИВЕРСАЛЬНЫЙ МЕТОД ДЛЯ ЗАПРОСА К БД
-        // без комментариев(всё итак понятно)
-        $sql = "SELECT ";
-        if ($unique === true)
-        {
-            $sql .= "DISTINCT ";
-        }
-        $sql .= "{$value} FROM journal.{$table}";
+        $sql = "SELECT subjects FROM journal.teachers_and_director WHERE `id` = '{$_SESSION['authorised']}'";
 
         $result = Db::getInstance()->sql($sql);
 

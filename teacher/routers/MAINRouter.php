@@ -1,19 +1,16 @@
 <?php
-if (!isset($_SESSION['authorized']))
+if ($_GET['exit'] == 'true')
 {
-    require_once "routers/authorizationRouter.php";
-}
-elseif ($_GET['exit'] == 'true')
-{
-    unset($_SESSION['authorized']);
+    unset($_SESSION['authorised']);
 
-    header("Location: index.php");
+    header("Location: http://localhost/journal/index.php");
 }
-else
-{
 
+if ($_SESSION['authorised'] !== false)
+{
+    echo $_SESSION['authorised'] === false;
     require_once "views/VMenu.php";
 
-    require_once "routers/users/postRout.php";
-    require_once "routers/users/getRout.php";
+    require_once "routers/postRout.php";
+    require_once "routers/getRout.php";
 }

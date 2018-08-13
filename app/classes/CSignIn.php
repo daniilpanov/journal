@@ -4,13 +4,33 @@ namespace app\classes;
 
 class CSignIn extends MSignIn
 {
-    public function signIn($login, $password)
+    public function signIn($sign_in_as, $login, $password)
     {
-        if ($response = parent::signIn($login, $password))
+        switch ($sign_in_as)
         {
-            $result = mysqli_fetch_assoc($response);
+            case "director";
+            case "teacher";
+                $table = "teachers_and_director";
+            break;
+
+            case "student":
+                $table = "students";
+            break;
         }
 
-        return $result['id'];
+        $response = parent::signIn($table, $login, $password);
+
+        $result = mysqli_fetch_assoc($response);
+
+        echo $result['id'];
+
+        if (empty($result['id']))
+        {
+            return false;
+        }
+
+        $result['sign_in_as'] = $sign_in_as;
+
+        return $result;
     }
 }

@@ -17,3 +17,4 @@ spl_autoload_register(function ($name) {
 
 // ANOTHER CONTROLLERS:
     $journal_list = new \app\classes\CJournalList(); // для работы с журналом
+    $search = new \app\classes\CSearch(); // для поиска

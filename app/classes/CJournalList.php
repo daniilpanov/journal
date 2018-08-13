@@ -75,14 +75,11 @@ class CJournalList extends MJournalList
      */
     public function getAllSubjects()
     {
-        $response = $this->getValue("subjects", "subject");
+        $response = parent::getAllSubjects();
 
         while ($row = mysqli_fetch_assoc($response))
         {
-            if ($row != null)
-            {
-                $for_select[] = $row;
-            }
+            $for_select[] = $row;
         }
 
         return $for_select;

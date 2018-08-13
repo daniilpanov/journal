@@ -9,5 +9,5 @@ if (isset($_SESSION['authorised']))
 else
 {
     // подключаем роутер для авторизации
-    require_once "routers/authorizationRouter.php";
+    require_once "routers/authorisationRouter.php";
 }
