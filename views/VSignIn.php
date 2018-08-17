@@ -1,27 +1,27 @@
-<div id="signIn">
-    <form method="post" action="index.php">
-        <p>
-            <label>
-                Логин: &emsp;
-                <input type="text" name="login" placeholder="Ваш логин ">
-            </label>
-        </p>
-        <p>
-            <label>
-                Пароль: &emsp;
-                <input type="password" name="password" placeholder="Ваш пароль ">
-            </label>
-        </p>
-        <p>
-            <label>
-                Войти как: &emsp;
-                <select name="signInAs">
-                    <option value="student">ученик</option>
-                    <option value="teacher">учитель</option>
-                    <option value="director">директор</option>
-                </select>
-            </label>
-        </p>
+<form method="post" id="signIn">
+    <p>
+        <label>Кто Вы? &emsp;</label>
+        <select name="sign_in_as">
+            <option value="student" selected>Ученик</option>
+            <option value="teacher">Учитель</option>
+            <option value="director">Директор</option>
+        </select>
+    </p>
+
+    <p>
+        <label>
+            Ваш логин: &emsp;
+            <input type="text" name="login" placeholder="Your login...">
+        </label>
+    </p>
+
+    <p>
+        <label>
+            Ваш пароль: &emsp;
+            <input type="password" name="password" placeholder="Your password...">
+        </label>
+    </p>
+    <p>
         <button type="submit" name="signIn">Войти</button>
-    </form>
-</div>
+    </p>
+</form>

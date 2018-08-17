@@ -1,16 +1,19 @@
-<!-- TAG " BODY " -->
+<!-- TAG "<BODY>" -->
 <body>
-
 <?php
-// ALL MENUS
+// Верхнее меню:
 require_once "views/VTopMenu.php";
+// Боковое меню:
 require_once "views/VSidebarMenu.php";
 ?>
-
-<!-- ТЕГ " MAIN " ДЛЯ ОСНОВНОГО ТЕЛА САЙТА ( контента ) -->
+<!-- TAG "<MAIN>" -->
 <main>
-    <hr>
     <?php
-    // ROUTER
-    require_once "routers/MAINRouter.php";
-    ?>
+    // Выводим контент
+    echo $info_page['content'];
+
+    /* Создаём объект класса 'Router'
+     ** и соответственно, вызываем конструктор класса,
+     *** который будет работать вечно
+    */
+    $router = new \app\classes\Router();

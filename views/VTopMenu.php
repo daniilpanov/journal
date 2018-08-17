@@ -15,8 +15,20 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav topPages">
-                <li class="active"><a href="index.php">Main page</a></li>
-                <li><a href="#">Link</a></li>
+                <li class="active"><a href="index.php">Главная страница</a></li>
+                <?php
+                $top_pages = $menu->getTopInfoPages();
+
+                foreach ($top_pages as $top_page)
+                {
+                    echo "
+                    <li>
+                        <a href='?info_page={$top_page['id']}' title='{$top_page['title']}'>
+                            <i class='{$top_page['icon']}'></i>{$top_page['name']}
+                        </a>
+                    </li>";
+                }
+                ?>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>

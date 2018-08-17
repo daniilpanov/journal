@@ -42,7 +42,7 @@ class Db extends Config
         // если соединение не открыто, выдаем сообщение об ошибке
         if (!self::$handler)
         {
-            die("<h1>Ошибка соединения с базой данных</h1>".mysqli_error(self::$handler));
+            die("<h1>Ошибка соединения с базой данных</h1>");
         }
 
 
@@ -51,11 +51,7 @@ class Db extends Config
     }
 
 
-    // РЕАЛИЗАЦИЯ ЗАПРОСА К БД
-    /**
-     * @param string
-     * @return bool|\mysqli_result
-     */
+    // реализация запроса к БД
     public function sql($query)
     {
         $result = mysqli_query(self::$handler, $query);
@@ -63,21 +59,28 @@ class Db extends Config
         // если запрос не удался, выдаем сообщение об ошибке
         if (!$result)
         {
-            die ("<h1>Ошибка запроса к базе данных</h1>".mysqli_error(self::$handler));
+            die ("<h1>Ошибка запроса к базе данных</h1>");
         }
 
         return $result;
     }
 
-    /**
-     * @param array
-     * @return array|\mysqli_result
-     */
-    public function multiSql($queries)
+    public function multiSql($query)
     {
-        foreach ($queries as $query)
+        $queries = explode("; ", $query);
+
+        foreach ($queries as $value)
         {
-            $result[] = $this->sql($query);
+            $result[] = mysqli_query(self::$handler, $value);
+        }
+
+        // если запрос не удался, выдаем сообщение об ошибке
+        foreach ($result as $item)
+        {
+            if (!$item)
+            {
+                die ("<h1>Ошибка запроса к базе данных</h1>");
+            }
         }
 
         return $result;
