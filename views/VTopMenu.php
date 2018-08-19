@@ -23,7 +23,7 @@
                 {
                     echo "
                     <li>
-                        <a href='?info_page={$top_page['id']}' title='{$top_page['title']}'>
+                        <a class='top_pages' href='?info_page={$top_page['id']}' title='{$top_page['title']}'>
                             <i class='{$top_page['icon']}'></i>{$top_page['name']}
                         </a>
                     </li>";

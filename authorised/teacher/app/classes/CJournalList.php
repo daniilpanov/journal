@@ -1,5 +1,5 @@
 <?php
-namespace authorised\teacher\app\classes;
+namespace teacher\app\classes;
 
 
 class CJournalList extends MJournalList

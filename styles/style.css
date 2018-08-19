@@ -1,3 +1,10 @@
+/* CLASS 'top_pages' */
+.top_pages
+{
+    color: white;
+}
+/* END  CLASS 'top_pages' */
+
 /* TAG <MAIN> */
 main
 {
@@ -10,6 +17,7 @@ main
 /* Само меню */
 nav#sidebar-nav
 {
+    overflow: auto;
     z-index: 1;
     background-color: black;
     transition-duration: 1s;
@@ -56,9 +64,10 @@ nav#sidebar-nav
 /* Само поле для логина */
 #signIn
 {
+    margin: 1em;
     text-align: center;
     display: block;
-    width: 100%;
+    width: 95%;
     font-size: large;
     font-family: "Droid Sans Mono", cursive;
 
@@ -151,10 +160,5 @@ nav#sidebar-nav
         #top-nav .navbar-right .form-group input
         {
             width: 100%;
-        }
-        /* ссылки */
-        #top-nav .navbar-left .top_pages
-        {
-            color: white;
         }
 /* END  ВЕРХНЕЕ МЕНЮ */

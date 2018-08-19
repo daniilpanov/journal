@@ -1,0 +1,50 @@
+// Если пользователь пожелал выйти:
+if (isset($_GET['exit']))
+{
+    unset($_SESSION['authorised']);
+
+    echo "<script>";
+    echo "document.location.href='http://localhost/journal';";
+    echo "</script>";
+}
+
+
+<?php
+namespace app\classes;
+
+
+class Router
+{
+    public function __construct()
+    {
+        if (!isset($_SESSION['authorised']['id']))
+        {
+            if ($_SESSION['authorised'] = $this->authorisationRouter())
+            {
+                echo "<script>";
+                echo "document.location.href='http://localhost/journal';";
+                echo "</script>";
+            }
+        }
+        elseif (isset($_SESSION['authorised']['id']))
+        {
+            $this->userRouter($_SESSION['authorised']['authorised_as']);
+        }
+    }
+
+    private function authorisationRouter()
+    {
+        $authorised = false;
+
+        $sign_in = new CSignIn();
+        $authorised = $sign_in->signIn($_POST['sign_in_as'], $_POST['login'], $_POST['password']);
+
+        return $authorised;
+    }
+    private function userRedirect(string $user)
+    {
+        echo "<script>";
+        echo "document.location.href='http://localhost/journal/authorised/{$user}';";
+        echo "</script>";
+    }
+}

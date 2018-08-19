@@ -4,50 +4,48 @@ namespace app\classes;
 
 class Router
 {
-    public function __construct()
+    /**
+     * Объект для получения контента
+     * @var CContent $content_object
+     */
+    private $content_object;
+
+    /**
+     * Контент страницы
+     * @var string $page_content
+     */
+    private $page_content;
+
+
+    public function __construct($content_object)
     {
-        if (!isset($_SESSION['authorised']['id']))
+        $this->content_object = $content_object;
+
+        if ($_GET)
         {
-            if ($_SESSION['authorised'] = $this->authorisationRouter())
+            foreach ($_GET as $index => $value)
             {
-                echo "<script>";
-                echo "document.location.href='http://localhost/journal';";
-                echo "</script>";
+                switch ($index)
+                {
+                    case 'info_page':
+                        $this->page_content = $this->content_object->getContent($value);
+                        break;
+                }
             }
         }
-        elseif (isset($_SESSION['authorised']['id']))
+        else
         {
-            $this->userRouter();
-        }
-        // Если пользователь пожелал выйти:
-        if (isset($_GET['exit']))
-        {
-            unset($_SESSION['authorised']);
-
-            echo "<script>";
-            echo "document.location.href='http://localhost/journal';";
-            echo "</script>";
+            $this->page_content = $this->content_object->getContent('main');
         }
     }
 
-    private function authorisationRouter()
+    public function printContent($key)
     {
-        $authorised = false;
+        echo $this->page_content[$key];
 
-        if (!$authorised)
+        if (!isset($_GET['info_page']) AND $key == 'content')
         {
             require_once "views/VSignIn.php";
         }
-
-        if (isset($_POST['signIn']))
-        {
-            $sign_in = new CSignIn();
-            $authorised = $sign_in->signIn($_POST['sign_in_as'], $_POST['login'], $_POST['password']);
-            return $authorised;
-        }
-    }
-    private function userRouter()
-    {
-        require_once ("authorised/" . $_SESSION['authorised']['authorised_as'] . "/index.php");
     }
 }

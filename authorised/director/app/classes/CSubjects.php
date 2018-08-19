@@ -1,5 +1,5 @@
 <?php
-namespace authorised\director\app\classes;
+namespace director\app\classes;
 
 
 class CSubjects extends MSubjects

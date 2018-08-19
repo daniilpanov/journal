@@ -2,7 +2,7 @@
 namespace director\app\classes;
 
 
-class MSubjects
+class CStudents extends MStudents
 {
 
 }

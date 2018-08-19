@@ -1,4 +1,4 @@
-<form method="post" id="signIn">
+<form method="post" id="signIn" action="authorised">
     <p>
         <label>Кто Вы? &emsp;</label>
         <select name="sign_in_as">

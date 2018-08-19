@@ -10,10 +10,4 @@ require_once "views/VSidebarMenu.php";
 <main>
     <?php
     // Выводим контент
-    echo $info_page['content'];
-
-    /* Создаём объект класса 'Router'
-     ** и соответственно, вызываем конструктор класса,
-     *** который будет работать вечно
-    */
-    $router = new \app\classes\Router();
+    $Router->printContent('content');

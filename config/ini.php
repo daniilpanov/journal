@@ -20,6 +20,5 @@ spl_autoload_register(function ($namespace)
     $menu = new \app\classes\CMenu();
     $content = new \app\classes\CContent();
 
-
-// Получение информации о странице ( не могу подключить позже ):
-require_once "views/VPage.php";
+// ROUTER'S OBJECT
+    $Router = new \app\classes\Router($content);
