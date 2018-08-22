@@ -1,15 +1,10 @@
-/* CLASS 'top_pages' */
-.top_pages
-{
-    color: white;
-}
-/* END  CLASS 'top_pages' */
-
 /* TAG <MAIN> */
 main
 {
     z-index: 0;
+
     margin-top: 125px;
+    margin-left: 10%;
 }
 /* END  TAG <MAIN> */
 
@@ -17,7 +12,6 @@ main
 /* Само меню */
 nav#sidebar-nav
 {
-    overflow: auto;
     z-index: 1;
     background-color: black;
     transition-duration: 1s;
@@ -29,34 +23,31 @@ nav#sidebar-nav
     height: 100%;
     width: 25em;
     left: -25em;
-    overflow: auto;
 }
     nav#sidebar-nav .text
     {
+        overflow: auto;
         z-index: inherit;
         margin-top: 30%;
     }
 /* Кнопка (тег <i>) для открытия меню */
 #nav_opener
 {
-    z-index: 2;
+    z-index: 5;
     font-size: 300%;
     color: white;
     background: black;
     padding: 1.5% 2%;
     max-width: 10%;
     max-height: 20%;
-    position: fixed;
-    top: 0;
-    left: 0;
     user-select: none;
     -ms-user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
-    transition-duration: 1s;
-    -o-transition-duration: 1s;
-    -moz-transition-duration: 1s;
-    -webkit-transition-duration: 1s;
+    transition-duration: 0.25s;
+    -o-transition-duration: 0.25s;
+    -moz-transition-duration: 0.25s;
+    -webkit-transition-duration: 0.25s;
 }
 /* END  БОКОВОЕ МЕНЮ */
 
@@ -64,42 +55,49 @@ nav#sidebar-nav
 /* Само поле для логина */
 #signIn
 {
-    margin: 1em;
+    display: flex;
+    flex-direction: row-reverse;
+    border: 2px black inset;
+    margin: 1em 0;
     text-align: center;
-    display: block;
-    width: 95%;
+    width: 90%;
     font-size: large;
     font-family: "Droid Sans Mono", cursive;
 
-    background: linear-gradient(to top left, darkgray 50%, #d7d7d7 50%);
-    background: -o-linear-gradient(to top left, darkgray 50%, #d7d7d7 50%);
-    background: -ms-linear-gradient(to top left, darkgray 50%, #d7d7d7 50%);
-    background: -moz-linear-gradient(to top left, darkgray 50%, #d7d7d7 50%);
-    background: -webkit-linear-gradient(to top left, darkgray 50%, #d7d7d7 50%);
+    background: url("../img/emblem.jpg") no-repeat;
+    background-size: 100%;
 
-    box-shadow: inset 0 0 1em black, 0 0 0.5em 0.25em blue;
-    -o-box-shadow: inset 0 0 1em black, 0 0 0.5em 0.25em blue;
-    -moz-box-shadow: inset 0 0 1em black, 0 0 0.5em 0.25em blue;
-    -webkit-box-shadow: inset 0 0 1em black, 0 0 0.5em 0.25em blue;
-
-    transition-duration: 1s;
-    -o-transition-duration: 1s;
-    -moz-transition-duration: 1s;
-    -webkit-transition-duration: 1s;
+    transition-duration: 0.75s;
+    -o-transition-duration: 0.75s;
+    -moz-transition-duration: 0.75s;
+    -webkit-transition-duration: 0.75s;
 }
 /* :HOVER */
 #signIn:hover
 {
-    box-shadow: inset 0 0 1em black, 0 0 1em 0.25em rgba(2, 83, 255, 0.65);
-    -o-box-shadow: inset 0 0 1em black, 0 0 1em 0.25em rgba(2, 83, 255, 0.65);
-    -moz-box-shadow: inset 0 0 1em black, 0 0 1em 0.25em rgba(2, 83, 255, 0.65);
-    -webkit-box-shadow: inset 0 0 1em black, 0 0 1em 0.25em rgba(2, 83, 255, 0.65);
+    border: 2px white dashed;
+
+    box-shadow: 0 0 1em black, inset 0 0 1em 1em white;
+    -o-box-shadow: 0 0 1em black, inset 0 0 1em 1em white;
+    -moz-box-shadow: 0 0 1em black, inset 0 0 1em 1em white;
+    -webkit-box-shadow: 0 0 1em black, inset 0 0 1em 1em white;
 }
+    /* форма ( '<form></form>' ) */
+    #signIn form
+    {
+        height: 100%;
+        border-left: 1px solid black;
+        min-width: 35%;
+        color: white;
+        margin: 9.75%;
+    }
+
     /* теги  '<select></select>', '<button type='submit'></button>', '<input type='text' />' и '<input type='password' />' : */
     /* all '<input />', '<select></select>' */
     #signIn input,
     #signIn select
     {
+        width: 100%;
         background-color: yellowgreen;
         border-color: black;
         border-width: 3px;
@@ -133,12 +131,12 @@ nav#sidebar-nav
     top: 0;
     left: 10%;
     position: fixed;
-    background-color: #2d2d2d;
+    background-color: whitesmoke;
     box-shadow: inset 0 0 15px 5px black;
     -o-box-shadow: inset 0 0 15px 5px black;
     -moz-box-shadow: inset 0 0 15px 5px black;
     -webkit-box-shadow: inset 0 0 15px 5px black;
-    width: 100%;
+    width: 90%;
     min-height: 100px;
     height: auto;
 }

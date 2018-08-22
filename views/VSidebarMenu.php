@@ -62,6 +62,7 @@
     id="nav_opener"
     class="i-jsButton"
     onclick="
+    alert(document.body.clientWidth);
     // получаем боковое меню для дальнейших манипуляций
     let nav_sidebar = document.getElementById('sidebar-nav');
     // получаем позицию меню для понятия, открыто оно или нет

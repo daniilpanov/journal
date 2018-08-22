@@ -23,6 +23,7 @@
     <link href="styles/bootstrap-3.3.2/dist/js/bootstrap.js" rel="script">
     <link href="styles/jquery.navgoco.css" rel="stylesheet" />
     <link href="styles/style.css" rel="stylesheet" />
+    <link href="styles/MEDIA_style.css" rel="stylesheet" />
     <!--End CSS-->
 
     <!--Fonts-->
