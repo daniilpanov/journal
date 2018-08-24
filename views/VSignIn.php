@@ -1,5 +1,5 @@
 <div id="signIn">
-    <form method="post" action="authorised">
+    <form method="post" action="authorised/index.php">
         <!-- Таблица для входа:  -->
         <table>
             <tr>

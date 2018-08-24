@@ -40,6 +40,7 @@
     <script type="text/javascript" src="js/jquery/jquery.cookie.js"></script>
     <script type="text/javascript" src="js/jquery/jquery.navgoco.js"></script>
     <script type="text/javascript" src="js/jquery/jquery.lightbox-0.5.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
     <!--End Java scripts-->
 
     <!--Bootstrap-->

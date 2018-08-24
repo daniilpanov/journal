@@ -1,7 +1,4 @@
 <?php
-/**
- * @link http://localhost/journal/
- */
 
 // CONFIG OF THIS PROJECT:
 /*

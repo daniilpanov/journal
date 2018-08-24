@@ -28,18 +28,21 @@ nav#sidebar-nav
     {
         overflow: auto;
         z-index: inherit;
-        margin-top: 30%;
+        margin-top: 35%;
     }
 /* Кнопка (тег <i>) для открытия меню */
 #nav_opener
 {
+    top: 2px;
+    left: 2px;
     z-index: 5;
+    position: fixed;
     font-size: 300%;
     color: white;
     background: black;
     padding: 1.5% 2%;
     max-width: 10%;
-    max-height: 20%;
+    max-height: 15%;
     user-select: none;
     -ms-user-select: none;
     -moz-user-select: none;
@@ -98,7 +101,7 @@ nav#sidebar-nav
     #signIn select
     {
         width: 100%;
-        background-color: yellowgreen;
+        background-color: darkblue;
         border-color: black;
         border-width: 3px;
     }
@@ -129,17 +132,23 @@ nav#sidebar-nav
 {
     z-index: 3;
     top: 0;
-    left: 10%;
+    left: 0;
     position: fixed;
     background-color: whitesmoke;
-    box-shadow: inset 0 0 15px 5px black;
-    -o-box-shadow: inset 0 0 15px 5px black;
-    -moz-box-shadow: inset 0 0 15px 5px black;
-    -webkit-box-shadow: inset 0 0 15px 5px black;
-    width: 90%;
+    border: none;
+    border-bottom: 1px rgba(0, 0, 0, 0.65) solid;
+    border-radius: 0;
+    width: 100%;
     min-height: 100px;
     height: auto;
+    max-height: 115px;
 }
+    /* ссылки */
+    #top-nav #bs-example-navbar-collapse-1
+    {
+        background: inherit;
+        margin: 2.5% 10%;
+    }
     /* форма с поиском */
     #top-nav .navbar-right
     {

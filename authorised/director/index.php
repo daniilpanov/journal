@@ -1,10 +1,6 @@
 <?php
-/**
- * @link http://localhost/journal/
- */
 
-// CONFIG OF THIS PROJECT:
-/*
+/* CONFIG OF THIS PROJECT:
  * 1.  header("Cache-Control: no-cache, must-revalidate")
  * 2.  Session_start()
  * 3.  Classes autoload
@@ -12,24 +8,21 @@
  */
 require_once "config/ini.php";
 
-// HEAD OF THIS PROJECT:
-/*
+/* HEAD OF THIS PROJECT:
  * 1.  <!DOCTYPE html>
  * 2.  <html>
  * 3.  <head>...</head>
  */
 require_once "header.php";
 
-// BODY OF THIS PROJECT:
-/*
+/* BODY OF THIS PROJECT:
  * 1.  Top&Sidebar menus
  * 2.  <main>
  * 3.  Main Router
  */
 require_once "body.php";
 
-// FOOT OF THIS PROJECT:
-/*
+/* FOOT OF THIS PROJECT:
  * 1.  </main>
  * 2.  <footer>...</footer>
  * 3.  </body>&</html>
