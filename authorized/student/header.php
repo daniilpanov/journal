@@ -1,21 +1,16 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" xml:lang="ru">
 <head>
     <!--Meta-->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="format-detection" content="">
-    <meta name="Description" content="<?  ?>" />
-    <meta name="Keywords" content="<?  ?>" />
-    <meta name="Robots" content="all" />
-    <meta name="Rating" content="General" />
-    <meta name="Author" content="" />
     <!--End Meta-->
 
 
     <title>
-        <?  ?>
+        <?=$S_Router->content['title'] ?>
     </title>
 
     <!--CSS-->

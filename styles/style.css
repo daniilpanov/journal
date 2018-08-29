@@ -8,6 +8,24 @@ main
 }
 /* END  TAG <MAIN> */
 
+/* TAG <FOOTER> */
+footer
+{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    margin: 0;
+    padding: 1%;
+
+    width: 100%;
+
+    background: whitesmoke;
+
+    border-top: 1px solid black;
+}
+/* END  TAG <FOOTER> */
+
 /* БОКОВОЕ МЕНЮ:  */
 /* Само меню */
 nav#sidebar-nav
@@ -33,6 +51,7 @@ nav#sidebar-nav
 /* Кнопка (тег <i>) для открытия меню */
 #nav_opener
 {
+    cursor: pointer;
     top: 2px;
     left: 2px;
     z-index: 5;
@@ -58,6 +77,10 @@ nav#sidebar-nav
 /* Само поле для логина */
 #signIn
 {
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
     display: flex;
     flex-direction: row-reverse;
     border: 2px black inset;
@@ -67,7 +90,7 @@ nav#sidebar-nav
     font-size: large;
     font-family: "Droid Sans Mono", cursive;
 
-    background: url("../img/emblem.jpg") no-repeat;
+    background: url("../img/emblem.jpg") no-repeat rgba(55, 55, 55, 0.91);
     background-size: 100%;
 
     transition-duration: 0.75s;

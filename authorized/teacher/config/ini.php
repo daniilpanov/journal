@@ -18,7 +18,7 @@ spl_autoload_register(function ($namespace)
     require_once ($path . ".php");
 });
 // ROUTER'S OBJECT:
-    $D_Router = new \student\app\classes\IRouter();
+    $T_Router = new \teacher\app\classes\IRouter();
 
 // CONTROLLERS' OBJECTS:
-    $journal_list = new \student\app\classes\CJournalList();
+    $journal_list = new \teacher\app\classes\CJournalList();

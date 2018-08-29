@@ -1,11 +1,13 @@
-/* Кнопка (тег '<i></i>') для открытия меню (при маленьком экране) */
 @media (max-width: 750px)
 {
     #nav_opener
     {
+        background: #373737;
         top: 100px;
+        right: 1px;
+        left: auto;
         padding: 5px;
-        font-size: 100%;
+        font-size: 150%;
     }
 
     #top-nav

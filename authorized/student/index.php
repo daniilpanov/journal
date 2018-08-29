@@ -4,8 +4,9 @@
 /*
  * 1.  header("Cache-Control: no-cache, must-revalidate")
  * 2.  Session_start()
- * 3.  Classes autoload
- * 4.  Objects of controllers
+ * 3.  Check: whether the user is authorized
+ * 4.  Classes autoload
+ * 5.  Objects of controllers
  */
 require_once "config/ini.php";
 
