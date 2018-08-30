@@ -23,4 +23,20 @@ class MJournalList
 
         return $result;
     }
+
+    protected function getSubjects($form)
+    {
+        $sql = "SELECT subject FROM journal.subjects WHERE form = '{$form}'";
+
+        $result = Db::getInstance()->sql($sql);
+        return $result;
+    }
+
+    protected function getForm($student_id)
+    {
+        $sql = "SELECT form FROM journal.students WHERE id = '{$student_id}'";
+
+        $result = Db::getInstance()->sql($sql);
+        return $result;
+    }
 }

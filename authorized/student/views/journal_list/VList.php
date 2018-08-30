@@ -1,5 +1,7 @@
 <?php
 //
+print_r($subjects = $journal_list->getSubjects($_SESSION['authorized']['id']));
+
 if (!isset($_POST['choose']))
 {
     //
@@ -16,6 +18,31 @@ elseif (isset($_POST['choose']))
     <table id="journal_list">
         <thead>
         <tr>
+            <th>
+                <div class='btn-group'>
+                    <button
+                            type='button' data-toggle='dropdown'
+                            class='btn btn-default dropdown-toggle dropdown-toggle'
+                            aria-haspopup='true' aria-expanded='false'
+                    >
+                        Предметы
+                        <span class="caret"></span>
+                    </button>
+
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header">Список:</li>
+                        <?php
+                        foreach ($subjects as $subject)
+                        {
+                            ?>
+                            <li class="dropdown-item"><label><input type="checkbox" name="subject[]" value="<?=$subject['subject']?>"><?=$subject['subject']?></label></li>
+                            <?php
+                        }
+                        ?>
+                    </ul>
+                </div> <!-- div.btn-group -->
+            </th>
+
             <th>
                 <div class='btn-group'>
                     <!-- кнопка, открывающая/закрывающая выпадающее меню -->

@@ -83,4 +83,28 @@ class CJournalList extends MJournalList
 
         return $sql;
     }
+
+    public function getSubjects($student_id)
+    {
+        $form = $this->getForm($student_id);
+
+        $response = parent::getSubjects($form);
+        while ($row = mysqli_fetch_assoc($response))
+        {
+            if ($test = substr($row['subject'], 3))
+            {
+                echo $test;
+            }
+            $result[] = $row['subject'];
+        }
+
+        return $result;
+    }
+    protected function getForm($student_id)
+    {
+        $response = parent::getForm($student_id);
+
+        $result = mysqli_fetch_assoc($response);
+        return $result;
+    }
 }
