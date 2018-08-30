@@ -5,5 +5,4 @@ This project is **example of _`school journal`_**
 
 _**<a href="http://localhost/journal/">
     `This project`
-</a>**_
-<h6>if you have downloaded this project</h6>
+</a>**_<h6>_if you have downloaded this project_</h6>

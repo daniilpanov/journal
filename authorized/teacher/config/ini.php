@@ -6,7 +6,6 @@ header("Cache-Control: no-cache, must-revalidate");
 // суперглобального массива $_SESSION
 session_start();
 
-
 // 'spl_autoload_register' - новая версия 'function __autoload'
 spl_autoload_register(function ($namespace)
 {
@@ -19,7 +18,7 @@ spl_autoload_register(function ($namespace)
     require_once ($path . ".php");
 });
 // ROUTER'S OBJECT:
-    $S_Router = new \student\app\classes\Router();
+    $T_Router = new \teacher\app\classes\IRouter();
 
 // CONTROLLERS' OBJECTS:
-    $journal_list = new \student\app\classes\CJournalList();
+    $journal_list = new \teacher\app\classes\CJournalList();

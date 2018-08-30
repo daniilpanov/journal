@@ -2,15 +2,6 @@
 <nav id="sidebar-nav">
     <!-- Блок с текстом -->
     <div class="text">
-        <?php
-        // Если пользователь вошел на сайт,
-        // то даём ему возможность выйти
-        if ($_SESSION['authorised']['id'])
-        {
-            echo "<p><a href='?exit=true'>Выйти</a></p>";
-        }
-        ?>
-
         <!-- В отдельном блоке подключаем все страницы с БД -->
         <div>
             <?php
@@ -58,7 +49,10 @@
 
 <!-- кнопка для открытия бокового меню -->
 <!-- ( использую атрибут onklick, внутри него всё подробно расписано ) -->
-<i id="nav_opener" onclick=" nav_opener_onclick(); ">
+<i id="nav_opener" title="Открыть боковое меню">
     <!-- ( использую (R)Font Awesome ) -->
     <i class="icon-align-justify"></i>
 </i>
+<script>
+    nav_opener_onclick();
+</script>
