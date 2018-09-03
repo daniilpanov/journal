@@ -59,18 +59,33 @@ nav#sidebar-nav
     font-size: 300%;
     color: white;
     background: black;
-    padding: 1.5% 2%;
+    padding: 0.5em;
     max-width: 10%;
-    max-height: 15%;
+    max-height: 17%;
     user-select: none;
     -ms-user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
-    transition-duration: 0.25s;
-    -o-transition-duration: 0.25s;
-    -moz-transition-duration: 0.25s;
-    -webkit-transition-duration: 0.25s;
 }
+    #nav_opener #for_rotate:before
+    {
+        transition-duration: 0.25s;
+        -o-transition-duration: 0.25s;
+        -moz-transition-duration: 0.25s;
+        -webkit-transition-duration: 0.25s;
+    }
+    #nav_opener #for_rotate.afterClick:before
+    {
+        transform: rotateZ(90deg);
+        color: #f0f0f0;
+    }
+    #nav_opener #nav_opener_text
+    {
+        margin: 0;
+        padding: 0;
+        font-size: x-small;
+        display: inherit;
+    }
 /* END  БОКОВОЕ МЕНЮ */
 
 /* ПОЛЕ ДЛЯ ЛОГИНА: */
@@ -90,7 +105,7 @@ nav#sidebar-nav
     font-size: large;
     font-family: "Droid Sans Mono", cursive;
 
-    background: url("../img/emblem.jpg") no-repeat rgba(55, 55, 55, 0.91);
+    background: rgba(55, 55, 55, 0.9) url("../img/emblem.jpg") no-repeat fixed center center;
     background-size: 100%;
 
     transition-duration: 0.75s;

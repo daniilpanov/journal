@@ -1,44 +1,31 @@
 <?php
-// Если кто-то случайно (или намеренно) открыл эту папку
-// (если нет $_POST),
-// переадресовываем его на главную страницу
-if (!$_POST)
-{
-    header("Location: ../index.php");
-}
-// Если же пользователь вошёл (попытался войти), то
-//
-session_start();
-// 'spl_autoload_register' - новая версия 'function __autoload'
-spl_autoload_register(function ($namespace)
-{
-    // делаем из пространства имён путь к файлам с классами:
-    $path = str_replace("\\", "/", $namespace);
 
-    //echo $path."<br>"; // для отладки
+// CONFIG OF THIS PROJECT:
+/*
+ * 1.  header("Cache-Control: no-cache, must-revalidate")
+ * 2.  Session_start()
+ * 3.  Classes autoload
+ * 4.  Objects of controllers
+ */
+require_once "config/ini.php";
 
-    // подключаем их:
-    require_once ($path . ".php");
-});
+/* HEAD OF THIS PROJECT:
+ * 1.  <!DOCTYPE html>
+ * 2.  <html>
+ * 3.  <head>...</head>
+ */
+require_once "header.php";
 
-// и вызываем статическкий метод роутера для авторизации
-switch ($_POST['sign_in_as'])
-{
-    case "director":
-        \director\app\classes\Router::authorisation($_POST['login'], $_POST['password'], $_POST['sign_in_as']);
+/* BODY OF THIS PROJECT:
+ * 1.  Top&Sidebar menus
+ * 2.  <main>
+ * 3.  Main Router
+ */
+require_once "body.php";
 
-        $_SESSION['authorized'] = \director\app\classes\Router::$authorized;
-        break;
-    case "teacher":
-        \teacher\app\classes\Router::authorisation($_POST['login'], $_POST['password'], $_POST['sign_in_as']);
-
-        $_SESSION['authorized'] = \teacher\app\classes\Router::$authorized;
-        break;
-    case "student":
-        \student\app\classes\Router::authorisation($_POST['login'], $_POST['password'], $_POST['sign_in_as']);
-
-        $_SESSION['authorized'] = \student\app\classes\Router::$authorized;
-        break;
-}
-
-echo "<script>document.location.href = 'http://localhost/journal/authorized/{$_POST['sign_in_as']}/index.php'</script>";
+/* FOOT OF THIS PROJECT:
+ * 1.  </main>
+ * 2.  <footer>...</footer>
+ * 3.  </body>&</html>
+ */
+require_once "footer.php";

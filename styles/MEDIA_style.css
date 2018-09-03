@@ -9,6 +9,10 @@
         padding: 5px;
         font-size: 150%;
     }
+        #nav_opener #nav_opener_text
+        {
+            display: none;
+        }
 
     #top-nav
     {

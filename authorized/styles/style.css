@@ -1,0 +1,43 @@
+#top-nav
+{
+    padding: 1% 0;
+    border-bottom: 1px solid black;
+}
+#top-nav a,
+#top-nav div.dropdown
+{
+    display: inline;
+    height: 100%;
+    margin: 5px;
+}
+#top-nav div.dropdown-menu a
+{
+    display: inline-block;
+}
+#top-nav div:first-child
+{
+    border-bottom: 1px solid black;
+    margin: 0 2.5%;
+    padding-bottom: 1%;
+}
+#top-nav div:first-child
+{
+    text-align: center;
+    display: block;
+}
+#top-nav div:first-child form,
+#top-nav div:first-child a
+{
+    width: 50%;
+    display: inline;
+}
+#top-nav div:first-child button
+{
+    display: inline;
+    width: 100%;
+}
+#top-nav #menu
+{
+    margin-top: 2%;
+    display: inline-block;
+}

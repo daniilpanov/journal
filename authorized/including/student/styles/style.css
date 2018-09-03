@@ -1,0 +1,25 @@
+#journal_list
+{
+    text-align: center;
+    padding: 1em;
+    margin: 1em;
+}
+    #journal_list thead
+    {
+        font-size: large;
+        margin: 1em;
+        padding: 1em;
+        border-top: 1px solid rgba(0, 0, 0, 0.5);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    }
+    #journal_list tbody
+    {
+        font-size: medium;
+        padding: 1em;
+    }
+        #journal_list thead tr:first-child th,
+        #journal_list thead tr:first-child td
+        {
+            padding: 5px;
+            border: 1px solid rgba(0, 0, 0, 0.25);
+        }

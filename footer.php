@@ -5,4 +5,8 @@
 </footer>
 
 </body>
+<script>
+    nav_opener_onclick();
+    body_onclick();
+</script>
 </html>

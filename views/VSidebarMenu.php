@@ -49,10 +49,8 @@
 
 <!-- кнопка для открытия бокового меню -->
 <!-- ( использую атрибут onklick, внутри него всё подробно расписано ) -->
-<i id="nav_opener" title="Открыть боковое меню">
+<button type="button" id="nav_opener" title="Открыть боковое меню">
     <!-- ( использую (R)Font Awesome ) -->
-    <i class="icon-align-justify"></i>
-</i>
-<script>
-    nav_opener_onclick();
-</script>
+    <i id="for_rotate" class="icon-align-justify"></i>
+    <span id="nav_opener_text">МЕНЮ</span>
+</button>
