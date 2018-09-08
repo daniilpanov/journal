@@ -1,8 +1,8 @@
 <?php
-namespace including\student\app\classes;
+namespace authorized\app\classes;
 
 
-class CJournalList extends MJournalList
+class CStudent extends MStudent
 {
     /**
      * @param int $student_id

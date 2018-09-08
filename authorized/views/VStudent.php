@@ -1,17 +1,17 @@
 <?php
 //
-print_r($subjects = $journal_list->getSubjects($_SESSION['authorized']['id']));
+print_r($subjects = $who->getSubjects($_SESSION['authorized']['id']));
 
 if (!isset($_POST['choose']))
 {
     //
-    $school_journal = $journal_list->getJournalList($_SESSION['authorized']['id']);
+    $school_journal = $who->getJournalList($_SESSION['authorized']['id']);
 }
 // А если же пользователь указал параметры, то
 elseif (isset($_POST['choose']))
 {
     //
-    $school_journal = $journal_list->getJournalList($_SESSION['authorized']['id']);
+    $school_journal = $who->getJournalList($_SESSION['authorized']['id']);
 }
 ?>
 <form method="post">

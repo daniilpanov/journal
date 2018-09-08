@@ -1,8 +1,8 @@
 <?php
-namespace including\student\app\classes;
+namespace authorized\app\classes;
 
 
-class MJournalList
+class MStudent
 {
     /**
      * @param int $student_id

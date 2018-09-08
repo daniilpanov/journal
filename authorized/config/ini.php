@@ -22,7 +22,6 @@ if (!$_SESSION['authorized'])
 // cache control
 header("Cache-Control: no-cache, must-revalidate");
 
-
 // делаем автозагрузку классов ('spl_autoload_register' - новая версия 'function __autoload')
 spl_autoload_register(function ($namespace)
 {
@@ -34,9 +33,26 @@ spl_autoload_register(function ($namespace)
     // подключаем их:
     require_once ($path . ".php");
 });
+
+//
+require_once "lib/functions.php";
 // CONTROLLERS' OBJECTS:
-    /** @var $menu \authorized\app\classes\CMenu */
-    $authorized_menu = new \authorized\app\classes\CMenu();
+switch ($_SESSION['authorized']['authorized_as'])
+{
+    case "director":
+        /** @var $who \authorized\app\classes\CDirector */
+        $who = new \authorized\app\classes\CDirector();
+        break;
+    case "teacher":
+        /** @var $who \authorized\app\classes\CTeacher */
+        $who = new \authorized\app\classes\CTeacher();
+        break;
+    case "student":
+        /** @var $who \authorized\app\classes\CStudent */
+        $who = new \authorized\app\classes\CStudent();
+        break;
+}
+
 //ROUTER'S OBJECT:
     /** @var $Router \authorized\app\classes\Router */
     $Router = new \authorized\app\classes\Router();

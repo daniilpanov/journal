@@ -25,7 +25,6 @@
     // Если же пользователь уже авторизирован,
     elseif (isset($_SESSION['authorized']))
     {
-        // всего лишь подключаем меню и нужный нам индекс
+        // всего лишь подключаем меню
         require_once "views/VMenu.php";
-        require_once "including/{$_SESSION['authorized']['authorized_as']}/index.php";
     }
