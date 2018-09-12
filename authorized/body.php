@@ -7,7 +7,6 @@
     // Если пользователь ещё не авторизирован,
     if (!isset($_SESSION['authorized']))
     {
-        // и если авторизация прошла успешно, то
         if ($authorized = \authorized\app\classes\Router::authorization($_POST['login'], $_POST['password'], $_POST['sign_in_as']))
         {
             /*

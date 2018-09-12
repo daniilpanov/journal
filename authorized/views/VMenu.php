@@ -6,7 +6,9 @@
             <button type="submit" class="btn btn-block" name="exit">
                 Выйти
             </button>
-        </form><?php
+        </form>
+
+        <?php
         // Если пользователь перешёл по какой-либо ссылке,
         if ($_GET)
         {
