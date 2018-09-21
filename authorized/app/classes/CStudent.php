@@ -11,22 +11,20 @@ class CStudent extends MStudent
      * @param string|null $begin_date
      * @param string|null $end_date
      * @return array|\mysqli_result
-     */
+*/
     public function getJournalList($student_id, $begin_mark = null, $end_mark = null, $begin_date = null, $end_date = null)
     {
         //
         $sql = $this->queryConstructor($begin_mark, $end_mark, $begin_date, $end_date);
         //
-        $response = parent::getJournalList($student_id, $sql);
+        $result = parent::getJournalList($student_id, $sql);
         //
-        while ($row = mysqli_fetch_assoc($response))
+        foreach ($result as $key => $item)
         {
             //
-            $row['date'] = implode("-", array( $row['year'], $row['month'], $row['day'] ));
+            $result[$key]['date'] = implode("-", array( $result[$key]['year'], $result[$key]['month'], $result[$key]['day'] ));
             //
-            unset($row['year'], $row['month'], $row['day']);
-            //
-            $result[] = $row;
+            unset($result[$key]['year'], $result[$key]['month'], $result[$key]['day']);
         }
 
         /**
@@ -88,23 +86,14 @@ class CStudent extends MStudent
     {
         $form = $this->getForm($student_id);
 
-        $response = parent::getSubjects($form);
-        while ($row = mysqli_fetch_assoc($response))
-        {
-            if ($test = substr($row['subject'], 3))
-            {
-                echo $test;
-            }
-            $result[] = $row['subject'];
-        }
+        $result = parent::getSubjects($form);
 
         return $result;
     }
     protected function getForm($student_id)
     {
-        $response = parent::getForm($student_id);
+        $result = parent::getForm($student_id);
 
-        $result = mysqli_fetch_assoc($response);
         return $result;
     }
 }

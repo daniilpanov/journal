@@ -1,5 +1,6 @@
 <?php
 namespace authorized\app\classes;
+use PDO;
 
 /**
  * @filename DB.php
@@ -11,7 +12,9 @@ namespace authorized\app\classes;
 
 class Db extends Config
 {
+    /** @var $instance Db|null */
     private static $instance = null; // объект для работы с БД
+    /** @var $handler PDO */
     private static $handler; // идентефикатор соединения
 
     // закрываем возможность создания и дублирования объектов
@@ -30,7 +33,7 @@ class Db extends Config
     {
         if (self::$instance === null)
         {
-            self::$instance = new self;
+            self::$instance = new self();
         }
 
         return self::$instance;
@@ -39,52 +42,54 @@ class Db extends Config
     // соединяемся с БД
     private function open_connection()
     {
-        self::$handler = mysqli_connect(self::DB_HOST, self::DB_USER, self::DB_PASS, self::DB_NAME);
+        /*
+         * Записываем в переменные данные
+         * из констант класса Config для подключения к БД.
+         */
 
-        // если соединение не открыто, выдаем сообщение об ошибке
-        if (!self::$handler)
+        $db_name = self::DB_NAME;
+        $host = self::DB_HOST;
+        $username = self::DB_USER;
+        $passwd = self::DB_PASS;
+
+        $opt = array(
+            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        );
+
+        // Далее, пробуем подключиться к БД:
+        try
         {
-            die("<h1>Ошибка соединения с базой данных</h1>");
+            // присваиваем self::$handler объект класса PDO;
+            // конструктору передаём данные для подключения к БД.
+            self::$handler = new PDO(
+                "mysql:dbname={$db_name};host={$host};charset=UTF8",
+                "{$username}",
+                "{$passwd}",
+                $opt);
         }
-
-
-        // установка принудительной кодировки UTF-8
-        mysqli_query(self::$handler, "set names utf8") or die ("set names utf8 failed");
+        // При неудачной попытке подключения к БД,
+        catch (\PDOException $e)
+        {
+            // выводим сообщение об ошибке
+            die($e->getMessage());
+        }
     }
 
 
     // реализация запроса к БД
-    public function sql($query)
+    public function sql($query, $emulate = true, ...$params)
     {
-        $result = mysqli_query(self::$handler, $query);
+        $STH = self::$handler->prepare($query);
 
-        // если запрос не удался, выдаем сообщение об ошибке
-        if (!$result)
+        if (!$emulate)
         {
-            die ("<h1>Ошибка запроса к базе данных</h1>");
+            $STH->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
         }
+        $STH->execute($params);
+        $STH->setAttribute(PDO::ATTR_EMULATE_PREPARES, true);
 
-        return $result;
-    }
-
-    public function multiSql($query)
-    {
-        $queries = explode("; ", $query);
-
-        foreach ($queries as $value)
-        {
-            $result[] = mysqli_query(self::$handler, $value);
-        }
-
-        // если запрос не удался, выдаем сообщение об ошибке
-        foreach ($result as $item)
-        {
-            if (!$item)
-            {
-                die ("<h1>Ошибка запроса к базе данных</h1>");
-            }
-        }
-
+        $result = $STH->fetchAll();
         return $result;
     }
 }

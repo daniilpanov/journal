@@ -88,7 +88,7 @@ class Router
              * 4. Шифруем полученные результаты вместе,
              * и записываем иж в переменную $password.
              */
-            echo $password = md5(md5($salt[0]) . md5($password) . md5($salt[1]));
+            $password = md5(md5($salt[0]) . md5($password) . md5($salt[1]));
 
             // Далее - sql-запрос.
             $sql = /** @lang MySQL */

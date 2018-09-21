@@ -26,17 +26,17 @@ class MStudent
 
     protected function getSubjects($form)
     {
-        $sql = "SELECT subject FROM journal.subjects WHERE form = '{$form}'";
+        $sql = "SELECT subject FROM journal.subjects WHERE form = :form";
 
-        $result = Db::getInstance()->sql($sql);
+        $result = Db::getInstance()->sql($sql, true, array( "form" => $form ));
         return $result;
     }
 
     protected function getForm($student_id)
     {
-        $sql = "SELECT form FROM journal.students WHERE id = '{$student_id}'";
+        $sql = "SELECT form FROM journal.students WHERE id = :student_id";
 
-        $result = Db::getInstance()->sql($sql);
+        $result = Db::getInstance()->sql($sql, true, array( "student_id" => $student_id ));
         return $result;
     }
 }
