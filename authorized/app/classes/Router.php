@@ -92,10 +92,10 @@ class Router
 
             // Далее - sql-запрос.
             $sql = /** @lang MySQL */
-                "SELECT id FROM journal.{$table} WHERE login = '{$login}' AND password = '{$password}'";
+                "SELECT id FROM journal.{$table} WHERE login = :login AND password = :password";
 
             //
-            if ($user_id = mysqli_fetch_assoc(Db::getInstance()->sql($sql))['id'])
+            if ($user_id = Db::getInstance()->sql($sql, array('login' => $login, 'password' => $password))->fetch()['id'])
             {
                 //
                 $authorized['id'] = $user_id;
